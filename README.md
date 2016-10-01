@@ -3,12 +3,15 @@
 Commit per exercise please!
 
 ## Exercise 1
-Make the tests work.
+Start by fixing the `QuoteRepositoryIntegrationTest`.
 
 ## Exercise 2
 Write your own implementation of `findByQuotation_OnlyReturnsQuotesByMatchingQuotes` in `QuoteRepositoryIntegrationTest`.
 
 Watch it fail for the right reason first. Then implement production code to make your test work.
+
+## Exercise 3
+Fix the the `MemorableQuotesControllerIntegrationTest` too.
 
 ## How to run in your IDE
 In `build.gradle` I included the `idea` and `eclipse` plugins, so all there is to it is `./gradlew eclipse` or `./gradlew idea` or `./gradlew.bat ...` if you're on windows.

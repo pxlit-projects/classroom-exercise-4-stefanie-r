@@ -9,8 +9,19 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface QuoteRepository extends JpaRepository<Quote, UUID> {
+public interface QuoteRepository {
 
-    @Query("select q from Quote q where q.author = ?1")
+
+    /*
+     * These methods are only here so we have compiling tests
+     */
+    void deleteAll();
+
+    List<Quote> save(List<Quote> quotes);
+
+    Quote save(Quote quote);
+
+    List<Quote> findAll();
+
     List<Quote> findByAuthor(String author);
 }
