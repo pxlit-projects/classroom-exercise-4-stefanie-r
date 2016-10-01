@@ -1,6 +1,7 @@
 package be.pxl.spring.rest.fallout.quote;
 
 import be.pxl.spring.rest.fallout.Application;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class QuoteRepositoryIntegrationTest {
     @Autowired
     private QuoteRepository quoteRepository;
 
+    @Before
+    public void setUp() throws Exception {
+        quoteRepository.deleteAll();
+    }
+
     @Test
     public void findByAuthor_OnlyReturnsQuotesByGivenAuthor() throws Exception {
         Quote piperQuote1 = aQuote().withAuthor("Piper").withQuotation("quotation").build();
@@ -30,5 +36,10 @@ public class QuoteRepositoryIntegrationTest {
         List<Quote> quotes = quoteRepository.findByAuthor("Piper");
 
         assertThat(quotes).extracting(Quote::getQuotation).containsOnly("quotation", "quotation3");
+    }
+
+    @Test
+    public void findByQuotation_OnlyReturnsQuotesByMatchingQuotes() throws Exception {
+        // Exercise 2
     }
 }
