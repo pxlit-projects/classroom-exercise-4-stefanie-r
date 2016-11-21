@@ -24,7 +24,8 @@ public class Quote {
     private String quotation;
 
     // because ORM :(
-    protected Quote(){}
+    protected Quote() {
+    }
 
     public Quote(String author, String quotation) {
         this.author = author;
@@ -41,5 +42,14 @@ public class Quote {
 
     public String getQuotation() {
         return quotation;
+    }
+
+    public boolean equals(Quote quote) {
+        return this.quotation.equals(quote.quotation);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

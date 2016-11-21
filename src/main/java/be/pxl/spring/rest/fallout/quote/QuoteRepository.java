@@ -25,4 +25,6 @@ public interface QuoteRepository extends CrudRepository<Quote, UUID> {
 //    List<Quote> findAll();
 
     List<Quote> findByAuthor(String author);
+
+    List<Quote> findByQuotation(String quote);
 }

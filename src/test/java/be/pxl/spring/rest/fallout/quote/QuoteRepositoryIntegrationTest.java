@@ -40,6 +40,13 @@ public class QuoteRepositoryIntegrationTest {
 
     @Test
     public void findByQuotation_OnlyReturnsQuotesByMatchingQuotes() throws Exception {
-        // Exercise 2
-    }
+        // Exercise 2 copy paste van findByAuthor_OnlyReturnsQuotesByGivenAuthor()
+        Quote piperQuote1 = aQuote().withAuthor("Piper").withQuotation("quotation").build();
+        Quote piperQuote2 = aQuote().withAuthor("Piper").withQuotation("quotation3").build();
+        Quote otherQuote = aQuote().withAuthor("Jamie").withQuotation("quotation2").build();
+        quoteRepository.save(Arrays.asList(piperQuote1, piperQuote2, otherQuote));
+
+        List<Quote> quotes = quoteRepository.findByQuotation("quotation");
+        assertThat(quotes.stream().anyMatch(s -> s.equals(piperQuote1))).isTrue();}
+
 }
