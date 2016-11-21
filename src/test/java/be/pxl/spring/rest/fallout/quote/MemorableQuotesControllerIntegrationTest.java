@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.mock.http.MockHttpOutputMessage;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -119,10 +120,11 @@ public class MemorableQuotesControllerIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isCreated())
                 .andReturn();
-        List<String> locationPathParams = Arrays.asList(result.getResponse().getHeader("location").split("/"));
+        MockHttpServletResponse str = result.getResponse();
+        List<String> locationPathParams = Arrays.asList(str.getHeader("location").split("/"));
         String id = locationPathParams.get(locationPathParams.size()-1);
 
-        List<Quote> quotes = (List<Quote>)quoteRepository.findAll();
+        List<Quote> quotes = quoteRepository.findAll();
         assertThat(quotes).extracting(Quote::getId).containsOnly(UUID.fromString(id));
         assertThat(quotes).extracting(Quote::getQuotation).containsOnly("Niks verdikt! M'n trui is gekrompen!");
     }

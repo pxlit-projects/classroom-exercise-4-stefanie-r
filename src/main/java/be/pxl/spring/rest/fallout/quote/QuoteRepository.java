@@ -21,8 +21,8 @@ public interface QuoteRepository extends CrudRepository<Quote, UUID> {
 //    List<Quote> save(List<Quote> quotes);
 //
 //    Quote save(Quote quote);
-//
-//    List<Quote> findAll();
+
+   List<Quote> findAll();
 
     List<Quote> findByAuthor(String author);
 
