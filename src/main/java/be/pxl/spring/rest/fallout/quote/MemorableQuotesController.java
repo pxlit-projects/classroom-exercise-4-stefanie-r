@@ -17,6 +17,9 @@ public class MemorableQuotesController {
 
     public static final String QUOTE_BASE_URL = "/quote";
 
+    public MemorableQuotesController() {
+    }
+
     @Autowired
     private QuoteRepository quoteRepository;
     @Autowired

@@ -122,7 +122,7 @@ public class MemorableQuotesControllerIntegrationTest {
         List<String> locationPathParams = Arrays.asList(result.getResponse().getHeader("location").split("/"));
         String id = locationPathParams.get(locationPathParams.size()-1);
 
-        List<Quote> quotes = quoteRepository.findAll();
+        List<Quote> quotes = (List<Quote>)quoteRepository.findAll();
         assertThat(quotes).extracting(Quote::getId).containsOnly(UUID.fromString(id));
         assertThat(quotes).extracting(Quote::getQuotation).containsOnly("Niks verdikt! M'n trui is gekrompen!");
     }
